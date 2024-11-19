@@ -3,10 +3,10 @@ persistent_worker:
     container:
       image: debian:latest
       cpu: 1
-      memory: 2G
+      memory: 100G
       volumes:
          - /:/ha-this-is-the-hosts-full-filesystem/
       #   - /tmp/persistent-cache:/tmp/cache:ro
 
 task:
-  script: uname -a
+  script: apt update -y && apt install -y procps && free -h
